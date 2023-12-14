@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.time.Instant;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.Transaction;
 
 public class RateLimiter {
 
