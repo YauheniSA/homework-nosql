@@ -50,32 +50,31 @@ CREATE TABLE post_by_topic_and_timestamp
     post_id INT,
     topic_id INT,
     created_at TIMESTAMP,
-    PRIMARY KEY (topic_id, created_at)
+    date DATE,
+    PRIMARY KEY ((topic_id, date), created_at)
 ) WITH CLUSTERING ORDER BY (created_at desc);
 
 
-INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at)
-VALUES (1, 'Anton', 1, 1, dateof(now()));
+INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at, date)
+VALUES (1, 'Anton', 1, 1, toTimestamp(now()), toDate(now()));
 
-INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at)
-VALUES (2, 'Alex', 2, 1, dateof(now()));
+INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at, date)
+VALUES (2, 'Alex', 2, 1, dateof(now()), toDate(now()));
 
-INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at)
-VALUES (2, 'Evgen', 3, 1, dateof(now()));
+INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at, date)
+VALUES (2, 'Evgen', 3, 1, dateof(now()), toDate(now()));
 
-INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at)
-VALUES (1, 'Anton', 4, 2, dateof(now()));
+INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at, date)
+VALUES (1, 'Anton', 4, 2, dateof(now()), toDate(now()));
 
-INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at)
-VALUES (2, 'Alex', 5, 2, dateof(now()));
+INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at, date)
+VALUES (2, 'Alex', 5, 2, dateof(now()), toDate(now()));
 
-INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at)
-VALUES (2, 'Evgen', 6, 2, dateof(now()));
+INSERT INTO post_by_topic_and_timestamp (user_id, username, post_id, topic_id, created_at, date)
+VALUES (2, 'Evgen', 6, 2, dateof(now()), toDate(now()));
 
 
 --Task 4
 SELECT  user_id, username, post_id, created_at
     FROM post_by_topic_and_timestamp
-    WHERE topic_id=1
-      AND created_at < toTimestamp('2023-12-15')
-      AND created_at >= toTimestamp('2023-12-14');
+    WHERE topic_id=2 AND date='2023-12-15';
